@@ -11,7 +11,7 @@ var camera_rotation_limit_x_max: float = 80.0
 @onready var camera_3d: Camera3D = %Camera3D
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var input_direction_2d: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var input_direction_3d: Vector3 = Vector3(input_direction_2d.x, 0.0, input_direction_2d.y)
 	
@@ -19,6 +19,13 @@ func _physics_process(_delta: float) -> void:
 	
 	self.velocity.x = direction.x * self.speed
 	self.velocity.z = direction.z * self.speed
+	
+	self.velocity.y -= 20.0 * delta
+	if Input.is_action_just_pressed("jump") and self.is_on_floor():
+		self.velocity.y = 10.0
+	elif Input.is_action_just_released("jump") and self.velocity.y > 0.0:
+		self.velocity.y = 0.0
+	
 	self.move_and_slide()
 
 

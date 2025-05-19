@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://gp1ja1bgj6cu"]
+[gd_scene load_steps=5 format=3 uid="uid://gp1ja1bgj6cu"]
 
 [ext_resource type="Script" uid="uid://kh6k0d1hndk0" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://cesr8bqm1wwl8" path="res://assets/3d-models/gun_model.glb" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://bc1jinuun6vbi" path="res://assets/reticle.png" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -18,3 +19,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66798, 0)
 
 [node name="gun_model" parent="Camera3D" instance=ExtResource("2_g2els")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400309, -0.49336, -0.59519)
+
+[node name="CanvasLayerHUD" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayerHUD"]
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.47
+anchor_right = 0.517
+anchor_bottom = 0.53
+offset_left = 0.639954
+offset_top = 0.399963
+offset_right = -0.640015
+offset_bottom = -0.400024
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qhqgy")
+expand_mode = 1
