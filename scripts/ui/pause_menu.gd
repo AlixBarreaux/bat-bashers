@@ -3,7 +3,7 @@ class_name PauseMenuUI
 
 
 func _ready() -> void:
-	self.hide()
+	self.hide_menu()
 
 
 func show_menu() -> void:
