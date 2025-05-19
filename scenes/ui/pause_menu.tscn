@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://6f0hhptlvwjg"]
+
+[ext_resource type="Script" uid="uid://cn8wuypg1igok" path="res://scripts/ui/pause_menu.gd" id="1_0lmf7"]
+[ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="1_6tw0m"]
+
+[node name="PauseMenuUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lmf7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33
+anchor_top = 0.198
+anchor_right = 0.67
+anchor_bottom = 0.802
+offset_left = -0.160004
+offset_top = -0.304016
+offset_right = 0.159973
+offset_bottom = 0.303955
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="QuitToMainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+text = "Quit to Main Menu"
+
+[node name="QuitToDesktopButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_6tw0m")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144
+anchor_top = 0.045
+anchor_right = 0.856
+anchor_bottom = 0.145
+offset_left = 0.111984
+offset_top = -0.160002
+offset_right = -0.112061
+offset_bottom = 0.0399933
+grow_horizontal = 2
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

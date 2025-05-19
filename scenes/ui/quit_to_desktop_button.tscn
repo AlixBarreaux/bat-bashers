@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0p3g27ov4ep2"]
+
+[ext_resource type="Script" uid="uid://bj0v71w41j7fb" path="res://scripts/ui/quit_to_desktop_button.gd" id="1_wgmre"]
+
+[node name="QuitToDesktopButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.113
+anchor_bottom = 0.048
+offset_right = -130.176
+offset_bottom = -31.104
+text = "Quit to Desktop"
+script = ExtResource("1_wgmre")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
