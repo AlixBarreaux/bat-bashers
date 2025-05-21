@@ -175,7 +175,7 @@ animation = &"Idle"
 mix_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_21igj"]
-graph_offset = Vector2(-551.869, 26.6755)
+graph_offset = Vector2(-521.932, 19.6941)
 nodes/Hurt/node = SubResource("AnimationNodeAnimation_21igj")
 nodes/Hurt/position = Vector2(-240, 300)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_vov07")
@@ -188,19 +188,19 @@ node_connections = [&"OneShot", 0, &"Idle", &"OneShot", 1, &"Hurt", &"output", 0
 script = ExtResource("2_vov07")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(3.95984e-23, 0.216561, 4.86123e-10)
-bones/1/rotation = Quaternion(-0.0286549, 0.188485, -0.686718, 0.701478)
-bones/2/rotation = Quaternion(-0.0560154, -0.016041, 0.274838, 0.959723)
-bones/3/rotation = Quaternion(0.0412136, 0.0599849, 0.264753, 0.961566)
-bones/4/rotation = Quaternion(-0.028655, -0.188485, 0.686718, 0.701478)
-bones/5/rotation = Quaternion(-0.0560154, 0.0160409, -0.274838, 0.959723)
-bones/6/rotation = Quaternion(0.0412136, -0.0599849, -0.264753, 0.961566)
+bones/0/position = Vector3(2.86985e-18, 0.238825, -3.71206e-10)
+bones/1/rotation = Quaternion(0.212013, -0.0180249, -0.596334, 0.774022)
+bones/2/rotation = Quaternion(0.106159, 0.0487929, 0.413408, 0.903019)
+bones/3/rotation = Quaternion(-0.00251344, 0.0494098, 0.34123, 0.938677)
+bones/4/rotation = Quaternion(0.212013, 0.0180249, 0.596335, 0.774023)
+bones/5/rotation = Quaternion(0.106159, -0.048793, -0.413408, 0.903019)
+bones/6/rotation = Quaternion(-0.00251344, -0.0494098, -0.34123, 0.938677)
 bones/7/position = Vector3(0.130992, -0.227392, -0.0878514)
-bones/7/rotation = Quaternion(0.261968, 0.0834551, 0.265751, 0.924004)
-bones/8/rotation = Quaternion(1.82186e-07, 0.690883, 0.722967, 2.16003e-07)
+bones/7/rotation = Quaternion(0.261968, 0.0834552, 0.265751, 0.924005)
+bones/8/rotation = Quaternion(1.50788e-07, 0.581374, 0.813636, 2.13743e-07)
 bones/10/position = Vector3(-0.130992, -0.227392, -0.0878514)
-bones/10/rotation = Quaternion(0.261968, -0.0834551, -0.265751, 0.924004)
-bones/11/rotation = Quaternion(1.83504e-07, 0.690883, 0.722967, 2.10074e-07)
+bones/10/rotation = Quaternion(0.261968, -0.0834552, -0.265751, 0.924005)
+bones/11/rotation = Quaternion(1.39031e-07, 0.581374, 0.813636, 2.34551e-07)
 
 [node name="bat" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_21igj")

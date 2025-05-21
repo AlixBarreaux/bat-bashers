@@ -21,6 +21,5 @@ func _physics_process(_delta: float) -> void:
 	self.linear_velocity =  direction * self.speed
 	bat_model.look_at(player.global_position)
 	
-	#print($CollisionShape3D.shape.radius)
 	if self.global_position.distance_to(player.global_position) <= collision_shape_3d_radius + 0.5:
 		self.linear_velocity = Vector3.ZERO

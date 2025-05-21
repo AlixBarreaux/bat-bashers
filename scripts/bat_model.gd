@@ -6,4 +6,4 @@ class_name BatModel
 
 
 func hurt() -> void:
-	animation_tree.set("parameters/OneShot/active", true)
+	animation_tree.set("parameters/OneShot/request", true)

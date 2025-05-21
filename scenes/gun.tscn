@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cihdq4y6j5ldg"]
+
+[ext_resource type="Script" uid="uid://dgmliullgd7vt" path="res://scripts/gun.gd" id="1_og67c"]
+[ext_resource type="PackedScene" uid="uid://cesr8bqm1wwl8" path="res://assets/3d-models/gun_model.glb" id="1_x77fm"]
+
+[node name="Gun" type="Node3D"]
+script = ExtResource("1_og67c")
+
+[node name="gun_model" parent="." instance=ExtResource("1_x77fm")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257483, -0.328674)
+
+[node name="ShootCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true

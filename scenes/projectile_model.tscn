@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6laf14kmq367"]
+
+[ext_resource type="PackedScene" uid="uid://c8kvkwydx5l8o" path="res://assets/3d-models/projectile_model.glb" id="1_o4b3t"]
+[ext_resource type="Material" uid="uid://c6b4vhkqxl2mw" path="res://resources/materials/projectile_material.tres" id="2_o4b3t"]
+
+[node name="projectile_model" instance=ExtResource("1_o4b3t")]
+
+[node name="Projectile" parent="." index="0"]
+material_override = ExtResource("2_o4b3t")

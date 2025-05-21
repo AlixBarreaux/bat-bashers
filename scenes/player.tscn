@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gp1ja1bgj6cu"]
 
 [ext_resource type="Script" uid="uid://kh6k0d1hndk0" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://cesr8bqm1wwl8" path="res://assets/3d-models/gun_model.glb" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://cihdq4y6j5ldg" path="res://scenes/gun.tscn" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bc1jinuun6vbi" path="res://assets/reticle.png" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
@@ -17,8 +17,8 @@ shape = SubResource("CapsuleShape3D_u8vuu")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66798, 0)
 
-[node name="gun_model" parent="Camera3D" instance=ExtResource("2_g2els")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400309, -0.49336, -0.59519)
+[node name="Gun" parent="Camera3D" instance=ExtResource("2_qhqgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.5, -0.8)
 
 [node name="CanvasLayerHUD" type="CanvasLayer" parent="."]
 
