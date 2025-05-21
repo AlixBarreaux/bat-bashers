@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cn8wuypg1igok" path="res://scripts/ui/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="1_6tw0m"]
 
-[node name="PauseMenuUI" type="Control"]
+[node name="PauseMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
