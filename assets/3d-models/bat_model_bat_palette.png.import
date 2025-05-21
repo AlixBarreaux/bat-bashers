@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxtkrt6ut7erb"
-path.s3tc="res://.godot/imported/bat_model_bat_palette.png-41680ade8248f7c1076ac4b8d2db7df6.s3tc.ctex"
+uid="uid://by4s4kt8cwbcy"
+path.s3tc="res://.godot/imported/bat_model_bat_palette.png-6ad94df9d56a96e3d634c69b78c58a3f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "94afeb2ce6602b76581644f77b6e2ef2"
+}
 
 [deps]
 
-source_file="res://miscellaneous/mob/bat/bat_model_bat_palette.png"
-dest_files=["res://.godot/imported/bat_model_bat_palette.png-41680ade8248f7c1076ac4b8d2db7df6.s3tc.ctex"]
+source_file="res://assets/3d-models/bat_model_bat_palette.png"
+dest_files=["res://.godot/imported/bat_model_bat_palette.png-6ad94df9d56a96e3d634c69b78c58a3f.s3tc.ctex"]
 
 [params]
 

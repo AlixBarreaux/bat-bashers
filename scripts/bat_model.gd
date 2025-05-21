@@ -1,0 +1,9 @@
+extends Node3D
+class_name BatModel
+
+
+@onready var animation_tree: AnimationTree = %AnimationTree
+
+
+func hurt() -> void:
+	animation_tree.set("parameters/OneShot/active", true)
