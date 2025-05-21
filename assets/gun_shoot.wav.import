@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cqntprocmmxp1"
-path="res://.godot/imported/mob_ko.wav-db772277b124eb428cd470725991ed98.sample"
+uid="uid://btkyo80d2rl05"
+path="res://.godot/imported/gun_shoot.wav-53faa1688fa3c60df69a8d075909c66c.sample"
 
 [deps]
 
-source_file="res://miscellaneous/mob/mob_ko.wav"
-dest_files=["res://.godot/imported/mob_ko.wav-db772277b124eb428cd470725991ed98.sample"]
+source_file="res://assets/gun_shoot.wav"
+dest_files=["res://.godot/imported/gun_shoot.wav-53faa1688fa3c60df69a8d075909c66c.sample"]
 
 [params]
 

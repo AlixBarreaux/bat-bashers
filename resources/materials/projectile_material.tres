@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c6b4vhkqxl2mw"]
+
+[ext_resource type="Shader" uid="uid://b4wc5wsyakc0a" path="res://resources/shaders/projectile.gdshader" id="1_cnvsj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cnvsj")
+shader_parameter/tail_color = Color(0.953193, 0.322449, 0, 1)
+shader_parameter/head_color = Color(0.385732, 0.109658, 4.81308e-08, 1)
