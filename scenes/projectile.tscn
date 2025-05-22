@@ -1,22 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6sh01nlvp7bj"]
+[gd_scene load_steps=5 format=3 uid="uid://c6sh01nlvp7bj"]
 
 [ext_resource type="PackedScene" uid="uid://c6laf14kmq367" path="res://scenes/projectile_model.tscn" id="1_c8fcr"]
 [ext_resource type="Script" uid="uid://dru0tv7a8lh4m" path="res://scripts/projectile.gd" id="1_q3m7n"]
+[ext_resource type="PackedScene" uid="uid://umveqtsxmda5" path="res://scenes/hit_box.tscn" id="2_softn"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6aapk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6q2a6"]
 size = Vector3(0.287, 0.3, 0.5)
 
-[node name="Projectile" type="Node3D"]
-script = ExtResource("1_q3m7n")
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Projectile" type="Area3D"]
 collision_layer = 0
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.234532)
-shape = SubResource("BoxShape3D_6aapk")
+collision_mask = 3
+script = ExtResource("1_q3m7n")
 
 [node name="projectile_model" parent="." instance=ExtResource("1_c8fcr")]
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="HitBox" parent="." instance=ExtResource("2_softn")]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.234532)
+shape = SubResource("BoxShape3D_6q2a6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.234532)
+shape = SubResource("BoxShape3D_6q2a6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

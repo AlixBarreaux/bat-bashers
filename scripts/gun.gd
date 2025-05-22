@@ -15,6 +15,6 @@ func shoot() -> void:
 	get_tree().get_root().add_child(projectile)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and shoot_cooldown_timer.is_stopped():
 		self.shoot()
