@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6sh01nlvp7bj"]
 
-[ext_resource type="PackedScene" uid="uid://c6laf14kmq367" path="res://scenes/projectile_model.tscn" id="1_c8fcr"]
+[ext_resource type="PackedScene" uid="uid://c6laf14kmq367" path="res://scenes/3d-models/projectile_model.tscn" id="1_c8fcr"]
 [ext_resource type="Script" uid="uid://dru0tv7a8lh4m" path="res://scripts/projectile.gd" id="1_q3m7n"]
 [ext_resource type="PackedScene" uid="uid://umveqtsxmda5" path="res://scenes/hit_box.tscn" id="2_softn"]
 

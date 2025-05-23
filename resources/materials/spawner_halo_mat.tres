@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://01amvnth0p7o"]
+
+[ext_resource type="Shader" uid="uid://cfnwyva3u4qeb" path="res://resources/shaders/spawner_halo.gdshader" id="1_s16y0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_s16y0")
+shader_parameter/color = Color(4.62055e-06, 0.758453, 0.456141, 1)

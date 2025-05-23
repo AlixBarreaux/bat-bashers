@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0yvd7bdkfllf"
-path.s3tc="res://.godot/imported/spawner_text.png-6fef19bda5db9cc58bf584d23a7bdb1f.s3tc.ctex"
+path.s3tc="res://.godot/imported/spawner_text.png-89b0b987b49dbf394e79863e3fe5d4f9.s3tc.ctex"
+path.etc2="res://.godot/imported/spawner_text.png-89b0b987b49dbf394e79863e3fe5d4f9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://miscellaneous/mob/spawner/spawner_text.png"
-dest_files=["res://.godot/imported/spawner_text.png-6fef19bda5db9cc58bf584d23a7bdb1f.s3tc.ctex"]
+source_file="res://assets/spawner_text.png"
+dest_files=["res://.godot/imported/spawner_text.png-89b0b987b49dbf394e79863e3fe5d4f9.s3tc.ctex", "res://.godot/imported/spawner_text.png-89b0b987b49dbf394e79863e3fe5d4f9.etc2.ctex"]
 
 [params]
 

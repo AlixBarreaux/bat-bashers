@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckmte0us4ay8w"]
+
+[ext_resource type="PackedScene" uid="uid://b828w8pbaa0d4" path="res://scenes/3d-models/spawner_model.glb" id="1_bue1m"]
+[ext_resource type="Material" uid="uid://01amvnth0p7o" path="res://resources/materials/spawner_halo_mat.tres" id="2_84boh"]
+[ext_resource type="Material" uid="uid://bsc5vh6x4w0xa" path="res://resources/materials/spawner_body_mat.tres" id="3_4lr0j"]
+[ext_resource type="Material" uid="uid://jvnbftghahty" path="res://resources/materials/spawner_screen_material.tres" id="3_6aa7x"]
+[ext_resource type="Material" uid="uid://bmlmc1nbgiyvi" path="res://resources/materials/spawner_rotor_blade_mat.tres" id="5_42y1x"]
+
+[sub_resource type="Animation" id="Animation_84boh"]
+resource_name = "rotate_rotor_blade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4lr0j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.0944, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42y1x"]
+_data = {
+&"RESET": SubResource("Animation_4lr0j"),
+&"rotate_rotor_blade": SubResource("Animation_84boh")
+}
+
+[node name="spawner_model" instance=ExtResource("1_bue1m")]
+
+[node name="Halo" parent="." index="0"]
+material_override = ExtResource("2_84boh")
+
+[node name="Body" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_4lr0j")
+surface_material_override/1 = ExtResource("3_6aa7x")
+
+[node name="Top" parent="." index="2"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 2.36677, 0)
+surface_material_override/0 = ExtResource("5_42y1x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_42y1x")
+}
+autoplay = "rotate_rotor_blade"
