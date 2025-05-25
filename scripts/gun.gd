@@ -6,6 +6,7 @@ class_name Gun
 
 @onready var marker_3d: Marker3D = %Marker3D
 @onready var shoot_cooldown_timer: Timer = %ShootCooldownTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func shoot() -> void:
@@ -13,6 +14,7 @@ func shoot() -> void:
 	var projectile: Projectile = projectile_scene.instantiate()
 	projectile.set_global_transform(marker_3d.get_global_transform())
 	get_tree().get_root().add_child(projectile)
+	audio_stream_player.play()
 
 
 func _physics_process(_delta: float) -> void:

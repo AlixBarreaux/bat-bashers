@@ -15,6 +15,8 @@ class_name Enemy
 @onready var hurt_box_collision_shape_3d: CollisionShape3D = hurt_box.get_node("CollisionShape3D")
 @onready var deletion_timer: Timer = %DeletionTimer
 
+@onready var death_sound: AudioStreamPlayer3D = %DeathSound
+
 
 func take_damage() -> void:
 	if health == 0:
@@ -34,6 +36,7 @@ func take_damage() -> void:
 		var random_upward_force: Vector3 = Vector3.UP * randf_range(1.0, 5.0)
 		apply_central_impulse(direction * 10.0 + random_upward_force)
 		deletion_timer.start()
+		death_sound.play()
 		GameStats.increase_score(1)
 
 

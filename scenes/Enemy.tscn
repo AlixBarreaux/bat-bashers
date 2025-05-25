@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2osfrprpvtqf"]
+[gd_scene load_steps=7 format=3 uid="uid://d2osfrprpvtqf"]
 
 [ext_resource type="Script" uid="uid://bipr1wxvliyxm" path="res://scripts/enemy.gd" id="1_mpr68"]
 [ext_resource type="PackedScene" uid="uid://dylkmnfyxvmuv" path="res://scenes/3d-models/bat_model.tscn" id="2_ft8do"]
 [ext_resource type="PackedScene" uid="uid://dfga825ucadoa" path="res://scenes/hurt_box.tscn" id="3_5wwv6"]
+[ext_resource type="AudioStream" uid="uid://cqntprocmmxp1" path="res://assets/audio/enemy_die.wav" id="5_1vja8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ex06h"]
 radius = 0.263548
@@ -32,6 +33,11 @@ entity_receiving_damage = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289304, 0)
 shape = SubResource("SphereShape3D_ufksc")
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_1vja8")
+bus = &"SoundEffects"
 
 [node name="DeletionTimer" type="Timer" parent="."]
 unique_name_in_owner = true

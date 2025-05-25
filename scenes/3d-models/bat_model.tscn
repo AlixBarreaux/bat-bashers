@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dylkmnfyxvmuv"]
+[gd_scene load_steps=14 format=3 uid="uid://dylkmnfyxvmuv"]
 
 [ext_resource type="PackedScene" uid="uid://x66axvee24b5" path="res://assets/3d-models/bat_model.glb" id="1_kpndy"]
 [ext_resource type="Material" uid="uid://7qgeor5hk8wl" path="res://resources/materials/bat_material.tres" id="2_21igj"]
 [ext_resource type="Script" uid="uid://b8qjnrl6iihur" path="res://scripts/bat_model.gd" id="2_vov07"]
+[ext_resource type="AudioStream" uid="uid://ce4gbruqqwdh6" path="res://assets/audio/enemy_hurt.wav" id="4_1clf8"]
 
 [sub_resource type="Animation" id="Animation_kpfc1"]
 resource_name = "Idle-loop"
@@ -187,19 +188,19 @@ node_connections = [&"OneShot", 0, &"Idle", &"OneShot", 1, &"Hurt", &"output", 0
 script = ExtResource("2_vov07")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(1.40339e-18, 0.231965, -3.20517e-10)
-bones/1/rotation = Quaternion(0.0436154, 0.116274, -0.687735, 0.715261)
-bones/2/rotation = Quaternion(0.0593913, 0.0210764, 0.319374, 0.945531)
-bones/3/rotation = Quaternion(0.133723, 0.094502, 0.308224, 0.937116)
-bones/4/rotation = Quaternion(0.0436153, -0.116274, 0.687735, 0.715261)
-bones/5/rotation = Quaternion(0.0593913, -0.0210765, -0.319374, 0.945531)
-bones/6/rotation = Quaternion(0.133723, -0.094502, -0.308224, 0.937116)
+bones/0/position = Vector3(4.40559e-17, 0.248298, -6.36924e-10)
+bones/1/rotation = Quaternion(0.189775, -0.00990333, -0.63404, 0.749587)
+bones/2/rotation = Quaternion(0.174269, 0.0771198, 0.397302, 0.897683)
+bones/3/rotation = Quaternion(0.128959, 0.101119, 0.361488, 0.917862)
+bones/4/rotation = Quaternion(0.189775, 0.00990336, 0.63404, 0.749587)
+bones/5/rotation = Quaternion(0.174269, -0.0771199, -0.397302, 0.897683)
+bones/6/rotation = Quaternion(0.128959, -0.101119, -0.361488, 0.917862)
 bones/7/position = Vector3(0.130992, -0.227392, -0.0878514)
 bones/7/rotation = Quaternion(0.261968, 0.0834552, 0.265751, 0.924005)
-bones/8/rotation = Quaternion(2.04599e-07, 0.704041, 0.71016, 2.10261e-07)
+bones/8/rotation = Quaternion(1.82959e-07, 0.648796, 0.760962, 2.21142e-07)
 bones/10/position = Vector3(-0.130992, -0.227392, -0.0878514)
 bones/10/rotation = Quaternion(0.261968, -0.0834552, -0.265751, 0.924005)
-bones/11/rotation = Quaternion(1.76693e-07, 0.704041, 0.710159, 2.11795e-07)
+bones/11/rotation = Quaternion(1.62488e-07, 0.648796, 0.760962, 2.15051e-07)
 
 [node name="bat" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_21igj")
@@ -218,3 +219,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="." index="4"]
+unique_name_in_owner = true
+stream = ExtResource("4_1clf8")
+bus = &"SoundEffects"

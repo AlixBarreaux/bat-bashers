@@ -17,6 +17,10 @@ config/icon="uid://dins6ghkrjiqc"
 config/macos_native_icon="res://miscellaneous/icons/icon.icns"
 config/windows_native_icon="res://miscellaneous/icons/icon.ico"
 
+[audio]
+
+buses/default_bus_layout="uid://d07qqjp0xr8ij"
+
 [autoload]
 
 Settings="*res://autoloads/settings.gd"
