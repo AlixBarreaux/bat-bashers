@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2osfrprpvtqf"]
 
-[ext_resource type="Script" uid="uid://bipr1wxvliyxm" path="res://scripts/mob.gd" id="1_ex06h"]
-[ext_resource type="PackedScene" uid="uid://dylkmnfyxvmuv" path="res://scenes/3d-models/bat_model.tscn" id="2_drloa"]
-[ext_resource type="PackedScene" uid="uid://dfga825ucadoa" path="res://scenes/hurt_box.tscn" id="3_drloa"]
+[ext_resource type="Script" uid="uid://bipr1wxvliyxm" path="res://scripts/enemy.gd" id="1_mpr68"]
+[ext_resource type="PackedScene" uid="uid://dylkmnfyxvmuv" path="res://scenes/3d-models/bat_model.tscn" id="2_ft8do"]
+[ext_resource type="PackedScene" uid="uid://dfga825ucadoa" path="res://scenes/hurt_box.tscn" id="3_5wwv6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ex06h"]
 radius = 0.263548
@@ -10,21 +10,21 @@ radius = 0.263548
 [sub_resource type="SphereShape3D" id="SphereShape3D_ufksc"]
 radius = 0.295502
 
-[node name="Mob" type="RigidBody3D"]
+[node name="Enemy" type="RigidBody3D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 7
 gravity_scale = 0.0
-script = ExtResource("1_ex06h")
+script = ExtResource("1_mpr68")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289304, 0)
 visible = false
 shape = SubResource("SphereShape3D_ex06h")
 
-[node name="BatModel" parent="." instance=ExtResource("2_drloa")]
+[node name="BatModel" parent="." instance=ExtResource("2_ft8do")]
 unique_name_in_owner = true
 
-[node name="HurtBox" parent="." node_paths=PackedStringArray("entity_receiving_damage") instance=ExtResource("3_drloa")]
+[node name="HurtBox" parent="." node_paths=PackedStringArray("entity_receiving_damage") instance=ExtResource("3_5wwv6")]
 visible = false
 collision_layer = 4
 entity_receiving_damage = NodePath("..")

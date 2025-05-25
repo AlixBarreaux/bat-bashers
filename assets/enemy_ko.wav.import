@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cqntprocmmxp1"
-path="res://.godot/imported/mob_ko.wav-6365d305bcba71800098895ef6cf5f62.sample"
+path="res://.godot/imported/enemy_ko.wav-6427354e35b2b725c1e63c51f4bcd0cf.sample"
 
 [deps]
 
-source_file="res://assets/mob_ko.wav"
-dest_files=["res://.godot/imported/mob_ko.wav-6365d305bcba71800098895ef6cf5f62.sample"]
+source_file="res://assets/enemy_ko.wav"
+dest_files=["res://.godot/imported/enemy_ko.wav-6427354e35b2b725c1e63c51f4bcd0cf.sample"]
 
 [params]
 

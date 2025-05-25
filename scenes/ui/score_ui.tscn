@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://3rablhoaq6ju"]
+
+[ext_resource type="Script" uid="uid://rrj1lta70n23" path="res://scripts/ui/score_ui.gd" id="1_ei5xf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ei5xf"]
+font_size = 60
+
+[node name="ScoreUI" type="Label"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.111
+offset_left = 50.0
+offset_top = 37.0
+offset_right = -50.0
+offset_bottom = 0.119987
+grow_horizontal = 2
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ei5xf")
+vertical_alignment = 1
+script = ExtResource("1_ei5xf")

@@ -20,6 +20,7 @@ config/windows_native_icon="res://miscellaneous/icons/icon.ico"
 [autoload]
 
 Settings="*res://autoloads/settings.gd"
+GameStats="*res://autoloads/game_stats.gd"
 
 [display]
 
@@ -32,6 +33,11 @@ window/stretch/mode="viewport"
 [global_group]
 
 Player=""
+Enemies=""
+
+[gui]
+
+theme/custom="uid://bpjm470kby7yn"
 
 [input]
 

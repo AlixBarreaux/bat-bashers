@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name Mob
+class_name Enemy
 
 
 @export var speed: float = randf_range(1.0, 2.0)
@@ -9,7 +9,6 @@ class_name Mob
 @onready var collision_shape_3d_radius: float = collision_shape_3d.shape.radius
 
 @onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
-
 
 @export var health: int = 3
 @onready var hurt_box: HurtBox = $HurtBox
@@ -35,6 +34,7 @@ func take_damage() -> void:
 		var random_upward_force: Vector3 = Vector3.UP * randf_range(1.0, 5.0)
 		apply_central_impulse(direction * 10.0 + random_upward_force)
 		deletion_timer.start()
+		GameStats.increase_score(1)
 
 
 func _physics_process(_delta: float) -> void:
