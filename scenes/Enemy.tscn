@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2osfrprpvtqf"]
+[gd_scene load_steps=10 format=3 uid="uid://d2osfrprpvtqf"]
 
 [ext_resource type="Script" uid="uid://bipr1wxvliyxm" path="res://scripts/enemy.gd" id="1_mpr68"]
 [ext_resource type="PackedScene" uid="uid://dylkmnfyxvmuv" path="res://scenes/3d-models/bat_model.tscn" id="2_ft8do"]
 [ext_resource type="PackedScene" uid="uid://dfga825ucadoa" path="res://scenes/hurt_box.tscn" id="3_5wwv6"]
 [ext_resource type="AudioStream" uid="uid://cqntprocmmxp1" path="res://assets/audio/enemy_die.wav" id="5_1vja8"]
 [ext_resource type="PackedScene" uid="uid://c1v3wxhbv3gx3" path="res://scenes/health.tscn" id="5_5wwv6"]
+[ext_resource type="PackedScene" uid="uid://umveqtsxmda5" path="res://scenes/hit_box.tscn" id="6_1vja8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ex06h"]
 radius = 0.263548
@@ -12,11 +13,15 @@ radius = 0.263548
 [sub_resource type="SphereShape3D" id="SphereShape3D_ufksc"]
 radius = 0.295502
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_iwav8"]
+radius = 0.4
+
 [node name="Enemy" type="RigidBody3D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("1_mpr68")
+smoke_puff_scene_file_path = "uid://cjk3frr43yesb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289304, 0)
@@ -41,12 +46,20 @@ stream = ExtResource("5_1vja8")
 
 [node name="DeletionTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 4.0
+wait_time = 2.5
 one_shot = true
 
 [node name="Health" parent="." instance=ExtResource("5_5wwv6")]
 max_health = 3
 health = 3
+
+[node name="HitBox" parent="." instance=ExtResource("6_1vja8")]
+collision_mask = 2
+damage_value = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("SphereShape3D_iwav8")
 
 [connection signal="timeout" from="DeletionTimer" to="." method="_on_timer_timeout"]
 [connection signal="decreased" from="Health" to="." method="_on_health_decreased"]

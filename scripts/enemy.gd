@@ -18,6 +18,10 @@ class_name Enemy
 @onready var death_sound: AudioStreamPlayer3D = %DeathSound
 
 
+func _ready() -> void:
+	assert(self.smoke_puff_scene_file_path != null)
+
+
 func die () -> void:
 	# Could replace hurt animation by a death one
 	bat_model.hurt()
@@ -38,6 +42,7 @@ func _on_health_decreased(_value: int) -> void:
 
 func _on_health_fully_depleted() -> void:
 	self.die()
+	
 
 
 func _physics_process(_delta: float) -> void:
@@ -50,5 +55,15 @@ func _physics_process(_delta: float) -> void:
 		self.linear_velocity = Vector3.ZERO
 
 
+@export_file("*.scn", "*.tscn") var smoke_puff_scene_file_path: String = ""
+
+func spawn_smoke_puff() -> void:
+	var smoke_puff_scene: PackedScene = load(smoke_puff_scene_file_path)
+	var smoke_puff_instance = smoke_puff_scene.instantiate()
+	smoke_puff_instance.set_deferred("global_position", self.get_global_position())
+	get_tree().get_root().add_child(smoke_puff_instance)
+
+
 func _on_timer_timeout() -> void:
+	self.spawn_smoke_puff()
 	self.queue_free()
