@@ -32,7 +32,7 @@ func die () -> void:
 	GameStats.increase_score(1)
 
 
-func _on_health_decreased(value: int) -> void:
+func _on_health_decreased(_value: int) -> void:
 	bat_model.hurt()
 
 

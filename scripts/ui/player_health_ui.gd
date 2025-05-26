@@ -17,9 +17,9 @@ func _ready() -> void:
 	progress_bar.set_value(health_scene.health)
 
 
-func on_health_decreased(value: int) -> void:
+func on_health_decreased(_value: int) -> void:
 	progress_bar.set_value(health_scene.health)
 
 
-func on_health_increased(value: int) -> void:
+func on_health_increased(_value: int) -> void:
 	progress_bar.set_value(health_scene.health)

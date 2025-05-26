@@ -42,7 +42,7 @@ func die() -> void:
 
 @onready var health: Health = %Health
 
-func _on_health_decreased(value: int) -> void:
+func _on_health_decreased(_value: int) -> void:
 	# Could play animation when hurt
 	pass
 
