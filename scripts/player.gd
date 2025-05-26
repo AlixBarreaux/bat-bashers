@@ -34,3 +34,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		self.rotation_degrees.y -= event.get_screen_relative().x * self.camera_sensitivity
 		self.camera_3d.rotation_degrees.x -= event.get_screen_relative().y * self.camera_sensitivity
 		self.camera_3d.rotation_degrees.x = clamp(self.camera_3d.rotation_degrees.x, self.camera_rotation_limit_x_min, self.camera_rotation_limit_x_max)
+
+
+func die() -> void:
+	print(self.name, ": Die!")
+
+
+@onready var health: Health = %Health
+
+func _on_health_decreased(value: int) -> void:
+	# Could play animation when hurt
+	pass
+
+
+func _on_health_fully_depleted() -> void:
+	self.die()

@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://gp1ja1bgj6cu"]
+[gd_scene load_steps=9 format=3 uid="uid://gp1ja1bgj6cu"]
 
 [ext_resource type="Script" uid="uid://kh6k0d1hndk0" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://cihdq4y6j5ldg" path="res://scenes/gun.tscn" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bc1jinuun6vbi" path="res://assets/reticle.png" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dgb30h1qoxfrb" path="res://scenes/ui/player_health_ui.tscn" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://c1v3wxhbv3gx3" path="res://scenes/health.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dfga825ucadoa" path="res://scenes/hurt_box.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
+radius = 0.6
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
@@ -20,6 +26,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66798, 0)
 
 [node name="Gun" parent="Camera3D" instance=ExtResource("2_qhqgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.5, -0.8)
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_scene") instance=ExtResource("6_tuyoq")]
+collision_layer = 2
+health_scene = NodePath("../Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_tuyoq")
 
 [node name="CanvasLayerHUD" type="CanvasLayer" parent="."]
 
@@ -37,3 +51,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_qhqgy")
 expand_mode = 1
+
+[node name="PlayerHealthUI" parent="CanvasLayerHUD" node_paths=PackedStringArray("health_scene") instance=ExtResource("4_qlg0r")]
+health_scene = NodePath("../../Health")
+
+[node name="Health" parent="." instance=ExtResource("5_qlg0r")]
+unique_name_in_owner = true
+max_health = 10
+health = 10
+
+[connection signal="decreased" from="Health" to="." method="_on_health_decreased"]
+[connection signal="fully_depleted" from="Health" to="." method="_on_health_fully_depleted"]
+
+[editable path="CanvasLayerHUD/PlayerHealthUI"]
