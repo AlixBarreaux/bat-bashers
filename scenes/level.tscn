@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqhm04jxccjq"]
+[gd_scene load_steps=9 format=3 uid="uid://cqhm04jxccjq"]
 
 [ext_resource type="PackedScene" uid="uid://gp1ja1bgj6cu" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Material" uid="uid://jcko1pi6qksg" path="res://resources/materials/platform_material_1.tres" id="1_ppgk2"]
@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://6f0hhptlvwjg" path="res://scenes/ui/pause_menu.tscn" id="2_w7c3h"]
 [ext_resource type="Environment" uid="uid://bv3bhndfqy2v3" path="res://resources/environments/main_environment.tres" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://bonekodhhql42" path="res://scenes/EnemySpawner.tscn" id="6_2r41h"]
-[ext_resource type="Script" uid="uid://ddvb7ketjb365" path="res://scripts/hit_box.gd" id="8_8c41q"]
 [ext_resource type="PackedScene" uid="uid://3rablhoaq6ju" path="res://scenes/ui/score_ui.tscn" id="8_b121j"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b121j"]
+[ext_resource type="PackedScene" uid="uid://fn6hwk8mqkhu" path="res://scenes/hit_box_kill_plane.tscn" id="9_olg7q"]
 
 [node name="Level" type="Node3D"]
 
@@ -101,13 +99,5 @@ visible = false
 
 [node name="ScoreUI" parent="CanvasLayerUI" instance=ExtResource("8_b121j")]
 
-[node name="HitBoxKillPlane" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("8_8c41q")
-metadata/_custom_type_script = "uid://ddvb7ketjb365"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxKillPlane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 0)
-shape = SubResource("WorldBoundaryShape3D_b121j")
+[node name="HitBoxKillPlane" parent="." instance=ExtResource("9_olg7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
