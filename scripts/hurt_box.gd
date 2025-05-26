@@ -2,7 +2,7 @@ extends Area3D
 class_name HurtBox
 
 
-@export var entity_receiving_damage: Node = null
+@export var health_scene: Health = null
 
 
 func enable() -> void:
@@ -16,8 +16,8 @@ func disable() -> void:
 
 
 func _ready() -> void:
-	assert(entity_receiving_damage != null)
+	assert(health_scene != null)
 
 
-func receive_hitbox_info() -> void:
-	entity_receiving_damage.take_damage()
+func receive_hitbox_info(damage_value: int) -> void:
+	health_scene.take_damage(damage_value)

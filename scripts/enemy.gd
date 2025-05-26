@@ -18,26 +18,26 @@ class_name Enemy
 @onready var death_sound: AudioStreamPlayer3D = %DeathSound
 
 
-func take_damage() -> void:
-	if health == 0:
-		return
-	
-	self.health -= 1
-	
-	if health > 0:
-		bat_model.hurt()
-	elif health <= 0:
-		# Could replace hurt animation by a death one
-		bat_model.hurt()
-		self.set_physics_process(false)
-		self.set_gravity_scale(1.0)
-		#-1.0 -> Away from the player
-		var direction: Vector3 = -1.0 * self.get_global_position().direction_to(player.get_global_position())
-		var random_upward_force: Vector3 = Vector3.UP * randf_range(1.0, 5.0)
-		apply_central_impulse(direction * 10.0 + random_upward_force)
-		deletion_timer.start()
-		death_sound.play()
-		GameStats.increase_score(1)
+func die () -> void:
+	# Could replace hurt animation by a death one
+	bat_model.hurt()
+	self.set_physics_process(false)
+	self.set_gravity_scale(1.0)
+	#-1.0 -> Away from the player
+	var direction: Vector3 = -1.0 * self.get_global_position().direction_to(player.get_global_position())
+	var random_upward_force: Vector3 = Vector3.UP * randf_range(1.0, 5.0)
+	apply_central_impulse(direction * 10.0 + random_upward_force)
+	deletion_timer.start()
+	death_sound.play()
+	GameStats.increase_score(1)
+
+
+func _on_health_decreased(value: int) -> void:
+	bat_model.hurt()
+
+
+func _on_health_fully_depleted() -> void:
+	self.die()
 
 
 func _physics_process(_delta: float) -> void:
