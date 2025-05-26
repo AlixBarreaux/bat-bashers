@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://fn6hwk8mqkhu"]
+
+[ext_resource type="PackedScene" uid="uid://umveqtsxmda5" path="res://scenes/hit_box.tscn" id="1_jwq5q"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jwq5q"]
+
+[node name="HitBoxKillPlane" instance=ExtResource("1_jwq5q")]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+shape = SubResource("WorldBoundaryShape3D_jwq5q")
