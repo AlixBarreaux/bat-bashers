@@ -35,6 +35,11 @@ health_scene = NodePath("../Health")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_tuyoq")
 
+[node name="Health" parent="." instance=ExtResource("5_qlg0r")]
+unique_name_in_owner = true
+max_health = 10
+health = 10
+
 [node name="CanvasLayerHUD" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayerHUD"]
@@ -54,11 +59,6 @@ expand_mode = 1
 
 [node name="PlayerHealthUI" parent="CanvasLayerHUD" node_paths=PackedStringArray("health_scene") instance=ExtResource("4_qlg0r")]
 health_scene = NodePath("../../Health")
-
-[node name="Health" parent="." instance=ExtResource("5_qlg0r")]
-unique_name_in_owner = true
-max_health = 10
-health = 10
 
 [connection signal="decreased" from="Health" to="." method="_on_health_decreased"]
 [connection signal="fully_depleted" from="Health" to="." method="_on_health_fully_depleted"]
