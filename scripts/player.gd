@@ -37,7 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func die() -> void:
-	print(self.name, ": Die!")
+	Events.game_over.emit()
+	self.queue_free()
 
 
 @onready var health: Health = %Health

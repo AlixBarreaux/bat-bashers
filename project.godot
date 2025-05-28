@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://d07qqjp0xr8ij"
 
 Settings="*res://autoloads/settings.gd"
 GameStats="*res://autoloads/game_stats.gd"
+Events="*res://autoloads/events.gd"
 
 [display]
 
