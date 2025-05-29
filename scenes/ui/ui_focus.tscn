@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1u46siljos5j"]
+
+[ext_resource type="Script" uid="uid://bvabw1wm7ar7y" path="res://scripts/ui/ui_focus.gd" id="1_gdpqr"]
+
+[node name="UIFocus" type="Node"]
+script = ExtResource("1_gdpqr")

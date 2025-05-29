@@ -1,22 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqhm04jxccjq"]
+[gd_scene load_steps=12 format=3 uid="uid://cqhm04jxccjq"]
 
 [ext_resource type="PackedScene" uid="uid://gp1ja1bgj6cu" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Material" uid="uid://jcko1pi6qksg" path="res://resources/materials/platform_material_1.tres" id="1_ppgk2"]
+[ext_resource type="Script" uid="uid://bjci3nuyhxyq8" path="res://scripts/level.gd" id="1_t1rx8"]
 [ext_resource type="Material" uid="uid://bwjt33w0j75eh" path="res://resources/materials/platform_material_2.tres" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://6f0hhptlvwjg" path="res://scenes/ui/pause_menu.tscn" id="2_w7c3h"]
 [ext_resource type="Environment" uid="uid://bv3bhndfqy2v3" path="res://resources/environments/main_environment.tres" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://bonekodhhql42" path="res://scenes/EnemySpawner.tscn" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://deqble6ccbl2f" path="res://scenes/ui/game_over_ui.tscn" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://3rablhoaq6ju" path="res://scenes/ui/score_ui.tscn" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://d2osfrprpvtqf" path="res://scenes/Enemy.tscn" id="9_8c41q"]
 [ext_resource type="PackedScene" uid="uid://fn6hwk8mqkhu" path="res://scenes/hit_box_kill_plane.tscn" id="9_olg7q"]
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_t1rx8")
 
 [node name="Player" parent="." instance=ExtResource("1_2q6dc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_2r41h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.4027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.403)
 
 [node name="CSGBoxes" type="Node3D" parent="."]
 
@@ -95,10 +98,12 @@ environment = ExtResource("3_w8frs")
 
 [node name="CanvasLayerUI" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayerUI" instance=ExtResource("2_w7c3h")]
-visible = false
+[node name="GameOverUI" parent="CanvasLayerUI" instance=ExtResource("6_olg7q")]
 
 [node name="ScoreUI" parent="CanvasLayerUI" instance=ExtResource("8_b121j")]
+
+[node name="PauseMenu" parent="CanvasLayerUI" instance=ExtResource("2_w7c3h")]
+visible = false
 
 [node name="HitBoxKillPlane" parent="." instance=ExtResource("9_olg7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)

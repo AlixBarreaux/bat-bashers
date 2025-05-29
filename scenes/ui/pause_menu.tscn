@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://6f0hhptlvwjg"]
+[gd_scene load_steps=5 format=3 uid="uid://6f0hhptlvwjg"]
 
 [ext_resource type="Script" uid="uid://cn8wuypg1igok" path="res://scripts/ui/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="1_6tw0m"]
+[ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="3_f6eus"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6eus"]
+font_size = 50
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -42,17 +46,35 @@ alignment = 1
 [node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../QuitToDesktopButton")
+focus_neighbor_top = NodePath("../QuitToDesktopButton")
+focus_neighbor_right = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../QuitToDesktopButton")
 text = "Resume"
 
-[node name="QuitToMainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../ResumeButton")
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath("../QuitToDesktopButton")
+focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
+focus_next = NodePath("../QuitToDesktopButton")
+focus_previous = NodePath("../ResumeButton")
 disabled = true
-text = "Quit to Main Menu"
+text = "Settings"
 
 [node name="QuitToDesktopButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_6tw0m")]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../SettingsButton")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../SettingsButton")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -67,7 +89,12 @@ offset_right = -0.112061
 offset_bottom = 0.0399933
 grow_horizontal = 2
 text = "Pause"
+label_settings = SubResource("LabelSettings_f6eus")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UIFocus" parent="." node_paths=PackedStringArray("parent_node", "element_to_focus") instance=ExtResource("3_f6eus")]
+parent_node = NodePath("..")
+element_to_focus = NodePath("../PanelContainer/MarginContainer/VBoxContainer/ResumeButton")
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

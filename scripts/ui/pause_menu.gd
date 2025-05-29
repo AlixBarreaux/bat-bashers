@@ -2,8 +2,18 @@ extends Control
 class_name PauseMenuUI
 
 
+func disable() -> void:
+	self.set_process_unhandled_key_input(false)
+	self.hide()
+
+
+func on_game_over() -> void:
+	self.disable()
+
+
 func _ready() -> void:
 	self.hide_menu()
+	Events.game_over.connect(on_game_over)
 
 
 func show_menu() -> void:

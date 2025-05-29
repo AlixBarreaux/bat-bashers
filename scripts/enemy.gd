@@ -18,8 +18,13 @@ class_name Enemy
 @onready var death_sound: AudioStreamPlayer3D = %DeathSound
 
 
+func on_game_over() -> void:
+	self.set_physics_process(false)
+
+
 func _ready() -> void:
 	assert(self.smoke_puff_scene_file_path != null)
+	Events.game_over.connect(on_game_over)
 
 
 func die () -> void:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bipy56brswyu6"]
+
+[ext_resource type="Script" uid="uid://dnu752a25txy1" path="res://scripts/ui/change_scene_button.gd" id="1_dx6yw"]
+
+[node name="ChangeSceneButton" type="Button"]
+offset_right = 49.0
+offset_bottom = 17.0
+script = ExtResource("1_dx6yw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

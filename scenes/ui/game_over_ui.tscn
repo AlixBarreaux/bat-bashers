@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://deqble6ccbl2f"]
+
+[ext_resource type="Script" uid="uid://cbx13ufh6xsaf" path="res://scripts/ui/game_over_ui.gd" id="1_i5oy2"]
+[ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="2_sxdiq"]
+[ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="2_u4odh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8c41q"]
+font_size = 60
+
+[node name="GameOverUI" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -601.0
+offset_top = -217.0
+offset_right = 601.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5oy2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_8c41q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play Again"
+
+[node name="QuitToDesktopButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_sxdiq")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UIFocus" parent="." node_paths=PackedStringArray("parent_node", "element_to_focus") instance=ExtResource("2_u4odh")]
+parent_node = NodePath("..")
+element_to_focus = NodePath("../MarginContainer/VBoxContainer/HBoxContainer2/PlayAgainButton")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
