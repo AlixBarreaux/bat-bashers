@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://8six34ib1piw"]
+
+[ext_resource type="Script" uid="uid://cjyjrey5lcaeb" path="res://scripts/ui/settings_menu.gd" id="1_qwcqe"]
+[ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="2_mhswj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc6f4"]
+font_size = 50
+
+[node name="SettingsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelOpaque"
+script = ExtResource("1_qwcqe")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_yc6f4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsValue" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SettingsValue"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "Default String"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme_override_constants/separation = 100
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_neighbor_left = NodePath("../SpinBox")
+focus_neighbor_top = NodePath("../../../../../../BackButton")
+focus_neighbor_right = NodePath("../SpinBox")
+focus_neighbor_bottom = NodePath("../../../../../../BackButton")
+focus_next = NodePath("../SpinBox")
+focus_previous = NodePath("../../../../../../BackButton")
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+focus_neighbor_left = NodePath("../HSlider")
+focus_neighbor_top = NodePath("../../../../../../BackButton")
+focus_neighbor_right = NodePath("../HSlider")
+focus_neighbor_bottom = NodePath("../../../../../../BackButton")
+focus_next = NodePath("../../../../../../BackButton")
+focus_previous = NodePath("../HSlider")
+select_all_on_focus = true
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.346
+anchor_top = 0.838
+anchor_right = 0.654
+anchor_bottom = 0.938
+offset_left = -0.320007
+offset_top = -0.0400391
+offset_right = 0.319946
+offset_bottom = -0.0400391
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/SpinBox")
+focus_neighbor_top = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider")
+focus_neighbor_right = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider")
+focus_neighbor_bottom = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider")
+focus_next = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider")
+focus_previous = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/SpinBox")
+text = "Back"
+
+[node name="UIFocus" parent="." node_paths=PackedStringArray("parent_node", "element_to_focus") instance=ExtResource("2_mhswj")]
+parent_node = NodePath("..")
+element_to_focus = NodePath("../MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider")
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingsValue/HBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

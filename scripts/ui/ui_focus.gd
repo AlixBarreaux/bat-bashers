@@ -10,7 +10,7 @@ func set_element_to_focus(element: Control) -> void:
 
 
 func on_parent_node_visibility_changed() -> void:
-	if element_to_focus.is_visible():
+	if parent_node.is_visible():
 		element_to_focus.grab_focus()
 
 
@@ -21,7 +21,8 @@ func on_viewport_gui_focus_changed(control: Control) -> void:
 
 
 func _ready() -> void:
-	assert(parent_node != null)
+	if parent_node == null:
+		parent_node = self.get_parent()
 	assert(parent_node is Control)
 	assert(element_to_focus != null)
 	

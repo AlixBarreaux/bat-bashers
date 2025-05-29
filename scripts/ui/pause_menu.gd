@@ -2,6 +2,9 @@ extends Control
 class_name PauseMenuUI
 
 
+@export_file("*.scn", "*.tscn") var ui_scene_to_load_file_path: String = ""
+
+
 func disable() -> void:
 	self.set_process_unhandled_key_input(false)
 	self.hide()
@@ -14,6 +17,7 @@ func on_game_over() -> void:
 func _ready() -> void:
 	self.hide_menu()
 	Events.game_over.connect(on_game_over)
+	assert(FileAccess.file_exists(self.ui_scene_to_load_file_path))
 
 
 func show_menu() -> void:
@@ -42,3 +46,17 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 
 func _on_resume_button_pressed() -> void:
 	self.hide_menu()
+
+
+@onready var settings_menu: SettingsMenu = %SettingsMenu
+
+func _on_settings_button_pressed() -> void:
+	settings_menu.show()
+
+
+# REFACTOR: Could improve UIFocus to grab focus
+@onready var resume_button: Button = %ResumeButton
+
+func _on_settings_menu_visibility_changed() -> void:
+	if not settings_menu.is_visible():
+		resume_button.grab_focus()

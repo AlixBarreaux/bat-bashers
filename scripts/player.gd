@@ -2,13 +2,37 @@ extends CharacterBody3D
 class_name Player
 
 
-@export var camera_sensitivity: float = 0.07
+@export var camera_sensitivity: float = Settings.camera_sensitivity
 var camera_rotation_limit_x_min: float = -80.0
 var camera_rotation_limit_x_max: float = 80.0
 
 @export var speed: float = 5.5
 
 @onready var camera_3d: Camera3D = %Camera3D
+
+
+func die() -> void:
+	Events.game_over.emit()
+	self.queue_free()
+
+
+@onready var health: Health = %Health
+
+func _on_health_decreased(_value: int) -> void:
+	# Could play animation when hurt
+	pass
+
+
+func _on_health_fully_depleted() -> void:
+	self.die()
+
+
+func on_camera_sensitivity_changed(value: float) -> void:
+	self.camera_sensitivity = value
+
+
+func _ready() -> void:
+	Settings.camera_sensitivity_changed.connect(on_camera_sensitivity_changed)
 
 
 func _physics_process(delta: float) -> void:
@@ -34,19 +58,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		self.rotation_degrees.y -= event.get_screen_relative().x * self.camera_sensitivity
 		self.camera_3d.rotation_degrees.x -= event.get_screen_relative().y * self.camera_sensitivity
 		self.camera_3d.rotation_degrees.x = clamp(self.camera_3d.rotation_degrees.x, self.camera_rotation_limit_x_min, self.camera_rotation_limit_x_max)
-
-
-func die() -> void:
-	Events.game_over.emit()
-	self.queue_free()
-
-
-@onready var health: Health = %Health
-
-func _on_health_decreased(_value: int) -> void:
-	# Could play animation when hurt
-	pass
-
-
-func _on_health_fully_depleted() -> void:
-	self.die()

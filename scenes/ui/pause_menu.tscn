@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6f0hhptlvwjg"]
+[gd_scene load_steps=6 format=3 uid="uid://6f0hhptlvwjg"]
 
 [ext_resource type="Script" uid="uid://cn8wuypg1igok" path="res://scripts/ui/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="1_6tw0m"]
+[ext_resource type="PackedScene" uid="uid://8six34ib1piw" path="res://scenes/ui/settings_menu.tscn" id="3_8uki6"]
 [ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="3_f6eus"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6eus"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0lmf7")
+ui_scene_to_load_file_path = "uid://8six34ib1piw"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -44,6 +46,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../QuitToDesktopButton")
@@ -63,7 +66,6 @@ focus_neighbor_right = NodePath("../QuitToDesktopButton")
 focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
 focus_next = NodePath("../QuitToDesktopButton")
 focus_previous = NodePath("../ResumeButton")
-disabled = true
 text = "Settings"
 
 [node name="QuitToDesktopButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_6tw0m")]
@@ -93,8 +95,15 @@ label_settings = SubResource("LabelSettings_f6eus")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SettingsMenu" parent="." instance=ExtResource("3_8uki6")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="UIFocus" parent="." node_paths=PackedStringArray("parent_node", "element_to_focus") instance=ExtResource("3_f6eus")]
 parent_node = NodePath("..")
 element_to_focus = NodePath("../PanelContainer/MarginContainer/VBoxContainer/ResumeButton")
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="visibility_changed" from="SettingsMenu" to="." method="_on_settings_menu_visibility_changed"]
