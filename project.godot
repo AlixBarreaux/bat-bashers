@@ -39,6 +39,7 @@ window/stretch/mode="viewport"
 
 Player=""
 Enemies=""
+EnemySpawners=""
 
 [gui]
 

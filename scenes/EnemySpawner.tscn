@@ -8,15 +8,16 @@
 radius = 1.0
 height = 3.0
 
-[node name="EnemySpawner" type="Node3D"]
+[node name="EnemySpawner" type="Node3D" groups=["EnemySpawners"]]
 script = ExtResource("1_ex0yn")
 enemy_scene = ExtResource("2_l0qx1")
+metadata/_edit_group_ = true
 
 [node name="Marker3D" type="Marker3D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 30.0
 autostart = true
 
 [node name="spawner_model" parent="." instance=ExtResource("3_l0qx1")]
