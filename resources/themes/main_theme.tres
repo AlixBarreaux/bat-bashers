@@ -4,5 +4,8 @@
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
 
 [resource]
+Label/font_sizes/font_size = 30
+LabelTitle/base_type = &"Label"
+LabelTitle/font_sizes/font_size = 60
 PanelOpaque/base_type = &"PanelContainer"
 PanelOpaque/styles/panel = SubResource("StyleBoxFlat_4nads")
