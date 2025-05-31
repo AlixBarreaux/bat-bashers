@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6f0hhptlvwjg"]
+[gd_scene load_steps=5 format=3 uid="uid://6f0hhptlvwjg"]
 
 [ext_resource type="Script" uid="uid://cn8wuypg1igok" path="res://scripts/ui/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="PackedScene" uid="uid://b0p3g27ov4ep2" path="res://scenes/ui/quit_to_desktop_button.tscn" id="1_6tw0m"]
 [ext_resource type="PackedScene" uid="uid://8six34ib1piw" path="res://scenes/ui/settings_menu.tscn" id="3_8uki6"]
 [ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="3_f6eus"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_f6eus"]
-font_size = 50
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -90,8 +87,8 @@ offset_top = -0.160002
 offset_right = -0.112061
 offset_bottom = 0.0399933
 grow_horizontal = 2
+theme_type_variation = &"LabelTitle"
 text = "Pause"
-label_settings = SubResource("LabelSettings_f6eus")
 horizontal_alignment = 1
 vertical_alignment = 1
 

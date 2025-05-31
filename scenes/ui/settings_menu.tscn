@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://8six34ib1piw"]
+[gd_scene load_steps=3 format=3 uid="uid://8six34ib1piw"]
 
 [ext_resource type="Script" uid="uid://cjyjrey5lcaeb" path="res://scripts/ui/settings_menu.gd" id="1_qwcqe"]
 [ext_resource type="PackedScene" uid="uid://1u46siljos5j" path="res://scenes/ui/ui_focus.tscn" id="2_mhswj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_yc6f4"]
-font_size = 50
 
 [node name="SettingsMenu" type="Panel"]
 anchors_preset = 15
@@ -31,8 +28,8 @@ theme_override_constants/separation = 100
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"LabelTitle"
 text = "Pause"
-label_settings = SubResource("LabelSettings_yc6f4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
