@@ -12,6 +12,7 @@ var camera_rotation_limit_x_max: float = 80.0
 @onready var health: Health = %Health
 
 var knockback_velocity: Vector3 = Vector3.ZERO
+@export var air_control_multiplier: float = 1.0
 
 
 func die() -> void:
@@ -43,7 +44,7 @@ func knockback(from_position: Vector3) -> void:
 	self.velocity.y = vertical_strength  # Apply arc lift here directly
 
 
-func _on_hurt_box_hitbox_info_received(damage_value: int, damage_location: Vector3) -> void:
+func _on_hurt_box_hitbox_info_received(_damage_value: int, damage_location: Vector3) -> void:
 	self.knockback(damage_location)
 
 
@@ -56,9 +57,18 @@ func _physics_process(delta: float) -> void:
 	var input_direction_3d: Vector3 = Vector3(input_direction_2d.x, 0.0, input_direction_2d.y)
 	var direction: Vector3 = self.get_transform().basis * input_direction_3d
 
-	# Horizontal movement
-	self.velocity.x = direction.x * self.speed + knockback_velocity.x
-	self.velocity.z = direction.z * self.speed + knockback_velocity.z
+	# Air control reduction
+	# Ensures it's only during knockback, not just falling.
+	if not self.is_on_floor() and knockback_velocity.length_squared() > 0.01:
+		# Can be tweaked (0.0 = no control, 1.0 = full control)
+		air_control_multiplier = 0.2  
+	else:
+		air_control_multiplier = 1.0
+
+	# Apply movement and knockback
+	self.velocity.x = direction.x * self.speed * air_control_multiplier + knockback_velocity.x
+	self.velocity.z = direction.z * self.speed * air_control_multiplier + knockback_velocity.z
+
 
 	# Gravity
 	self.velocity.y -= 20.0 * delta
