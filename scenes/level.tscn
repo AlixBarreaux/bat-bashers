@@ -197,6 +197,9 @@ offset_bottom = 23.0
 [node name="HitBoxKillPlane" parent="." instance=ExtResource("9_olg7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 
+[node name="Enemy23" parent="." instance=ExtResource("9_8c41q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -44)
+
 [node name="Enemy" parent="." instance=ExtResource("9_8c41q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -35)
 

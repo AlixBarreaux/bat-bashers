@@ -19,5 +19,9 @@ func _ready() -> void:
 	assert(health_scene != null)
 
 
-func receive_hitbox_info(damage_value: int) -> void:
+signal hitbox_info_received(damage_value: int, damage_location: Vector3)
+
+func receive_hitbox_info(damage_value: int, damage_location: Vector3) -> void:
 	health_scene.take_damage(damage_value)
+	
+	hitbox_info_received.emit(damage_value, damage_location)

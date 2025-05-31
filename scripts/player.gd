@@ -31,6 +31,22 @@ func on_camera_sensitivity_changed(value: float) -> void:
 	self.camera_sensitivity = value
 
 
+var knockback_velocity: Vector3 = Vector3.ZERO
+
+func knockback(from_position: Vector3) -> void:
+	var strength: float = 4.0
+	var vertical_strength: float = 1.5
+	
+	var knockback_direction: Vector3 = (self.get_global_position() - from_position).normalized()
+	knockback_direction.y = 0  # Keep it flat
+	knockback_velocity = knockback_direction * strength
+	knockback_velocity.y = vertical_strength
+
+
+func _on_hurt_box_hitbox_info_received(damage_value: int, damage_location: Vector3) -> void:
+	self.knockback(damage_location)
+
+
 func _ready() -> void:
 	Settings.camera_sensitivity_changed.connect(on_camera_sensitivity_changed)
 
